@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeScreenFragment">
+
+    <fragment
+        android:id="@+id/homeScreenFragment"
+        android:name="com.example.navgraphtest.HomeScreenFragment"
+        android:label="fragment_home_screen"
+        tools:layout="@layout/fragment_home_screen" >
+        <action
+            android:id="@+id/action_homeScreenFragment_to_calendarViewFragment"
+            app:destination="@id/calendarViewFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/homeScreenFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_categoryQuickAddFragment"
+            app:destination="@id/categoryQuickAddFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.navgraphtest.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/calendarViewFragment"
+        android:name="com.example.navgraphtest.CalendarViewFragment"
+        android:label="fragment_calendar_view"
+        tools:layout="@layout/fragment_calendar_view" />
+    <fragment
+        android:id="@+id/categoryQuickAddFragment"
+        android:name="com.example.navgraphtest.CategoryQuickAddFragment"
+        android:label="fragment_category_quick_add"
+        tools:layout="@layout/fragment_category_quick_add" >
+        <action
+            android:id="@+id/action_categoryQuickAddFragment_to_addItemFromCategoryFragment"
+            app:destination="@id/addItemFromCategoryFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/fragment_open_enter"
+            app:popExitAnim="@anim/exit_to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/addItemFromCategoryFragment"
+        android:name="com.example.navgraphtest.AddItemFromCategoryFragment"
+        android:label="fragment_add_item_from_category"
+        tools:layout="@layout/fragment_add_item_from_category" >
+        <argument
+            android:name="category_title"
+            app:argType="string"
+            android:defaultValue="Lunch" />
+    </fragment>
+</navigation>
