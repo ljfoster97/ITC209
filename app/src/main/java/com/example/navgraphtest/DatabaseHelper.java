@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+
 import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -36,13 +38,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Creating tables
     @Override
     public void onCreate(SQLiteDatabase database) {
-        String CREATE_CATEGORIES,CREATE_ITEMS_TABLE,CREATE_ENTRY_TABLE;
+        String CREATE_CATEGORIES, CREATE_ITEMS_TABLE, CREATE_ENTRY_TABLE ;
         //creating table
          CREATE_CATEGORIES =
                  "CREATE TABLE " + TABLE_CATEGORIES
                      + "("
 
-                         + "ID INTEGER PRIMARY KEY, "
+                         + "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
                          + "Title TEXT"
 
                      + ")";
@@ -60,25 +62,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
                      + ")";
 
-//         CREATE_ENTRY_TABLE =
-//                 "CREATE TABLE " + TABLE_ENTRIES
-//                     + "("
-//
-//                     + KEY_ENTRY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-//                     + KEY_DATE + "STRING,"
-//                     + "FOREIGN KEY ("+KEY_ITEM_ID+") REFERENCES " + TABLE_ITEMS + "("+KEY_ITEM_ID+")"
-//
-//                     + ")";
+         CREATE_ENTRY_TABLE =
+                 "CREATE TABLE " + TABLE_ENTRIES
+                     + "("
+
+                     + KEY_ENTRY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                     + KEY_DATE + " TEXT,"
+                     + KEY_ITEM_ID + " INTEGER,"
+                     + "FOREIGN KEY ("+KEY_ITEM_ID+") REFERENCES " + TABLE_ITEMS + "("+KEY_ITEM_ID+")"
+
+                     + ")";
+
 
         database.execSQL(CREATE_CATEGORIES);
         database.execSQL(CREATE_ITEMS_TABLE);
-//        database.execSQL(CREATE_ENTRY_TABLE);
+        database.execSQL(CREATE_ENTRY_TABLE);
+
+
     }
 
     //upgrading database
     @Override
     public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
         database.execSQL("DROP TABLE IF EXISTS " + TABLE_CATEGORIES);
+        database.execSQL("DROP TABLE IF EXISTS " + TABLE_ITEMS);
+        database.execSQL("DROP TABLE IF EXISTS " + TABLE_ENTRIES);
 
         // create tables again
         onCreate(database);
@@ -105,6 +113,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         database.insert(TABLE_ITEMS, null, values);
         database.close();
+    }
+
+    public void addJournalEntry(FoodItemModel item) {
+        SQLiteDatabase database = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_DATE, String.valueOf(CalendarDay.today()));
+        values.put(KEY_ITEM_ID, item.itemID);
+
     }
 
     //Getting a FoodItem by ID:

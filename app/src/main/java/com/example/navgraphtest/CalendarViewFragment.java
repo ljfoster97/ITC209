@@ -13,10 +13,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CalendarView;
 import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
+
+import org.threeten.bp.LocalDate;
 
 import java.util.ArrayList;
 
@@ -24,7 +28,8 @@ import static android.content.ContentValues.TAG;
 
 public class CalendarViewFragment extends Fragment {
 
-    private CalendarView mCalendarView;
+    private MaterialCalendarView mCalendarView;
+    private CalendarDay currentDate;
     private TextView mTextViewCurrentDate;
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
@@ -39,19 +44,13 @@ public class CalendarViewFragment extends Fragment {
         ((MainActivity) getActivity()).setActionBarTitle("Calendar View");
         ((MainActivity) getActivity()).getSupportActionBar().setSubtitle("View your consumption history");
 
+        // Open fragment with today's date selected on calendarview.
+        mCalendarView.setSelectedDate(CalendarDay.today());
+
         // initViews for category tabs
         initViews();
 
-        mTextViewCurrentDate = getActivity().findViewById(R.id.currentDateTextView);
-        mCalendarView = getActivity().findViewById(R.id.calendarView);
-        mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(CalendarView calendarView, int i, int i1, int i2) {
-                String date = (i1 + 1) + "/" + i2 + "/" + i;
 
-                mTextViewCurrentDate.setText(date);
-            }
-        });
     }
 
 
@@ -59,6 +58,8 @@ public class CalendarViewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView: ");
+
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_calendar_view, container, false);
 
@@ -70,6 +71,17 @@ public class CalendarViewFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Log.d(TAG, "onViewCreated: ");
+
+        mTextViewCurrentDate = getActivity().findViewById(R.id.currentDateTextView);
+        mCalendarView = getActivity().findViewById(R.id.calendarView);
+        mCalendarView.setOnDateChangedListener(new OnDateSelectedListener(){
+            @Override
+            public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
+                mTextViewCurrentDate.setText(String.valueOf(date));
+            }
+
+        });
+
         final NavController navController = Navigation.findNavController(view);
     }
 
