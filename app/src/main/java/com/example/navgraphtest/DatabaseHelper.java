@@ -115,12 +115,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         database.close();
     }
 
-    public void addJournalEntry(FoodItemModel item) {
+    public void addJournalEntry(JournalEntryModel entry) {
         SQLiteDatabase database = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_DATE, String.valueOf(CalendarDay.today()));
-        values.put(KEY_ITEM_ID, item.itemID);
+        values.put(KEY_DATE, entry.getEntryDate());
+        values.put(KEY_ITEM_ID, entry.getItemID());
+
+    }
+
+    public ArrayList<FoodItemModel> getJournalEntries(String date, String category) {
+        ArrayList<FoodItemModel> items = new ArrayList<FoodItemModel>();
+
+        SQLiteDatabase database = this.getReadableDatabase();
+
+        String selectQuery = "SELECT "+ KEY_ITEM_ID +", " + KEY_ITEM_NAME + ", " + KEY_ITEM_CALORIES + " FROM (( SELECT * FROM " + TABLE_ENTRIES + " WHERE " +
+                KEY_DATE + " = '" + date + "'" + " INNER JOIN " +
+                TABLE_ITEMS + " ON " + TABLE_ENTRIES+"."+KEY_ITEM_ID+" = "+ TABLE_ITEMS + "." + KEY_ITEM_ID +")) WHERE " + KEY_CATEGORY + "=" + category;
+
+
+
+        Cursor cursor = database.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                //Create empty item, and populate it with tale date from row:
+                FoodItemModel item = new FoodItemModel();
+                item.setItemID(cursor.getString(0));
+                item.setItemName(cursor.getString(1));
+                item.setItemCalories(Integer.parseInt(cursor.getString(2)));
+                item.setItemCategoryTitle(cursor.getString(3));
+                //Add item to list:
+                items.add(item);
+            } while (cursor.moveToNext());
+        }
+
+        return items;
 
     }
 
