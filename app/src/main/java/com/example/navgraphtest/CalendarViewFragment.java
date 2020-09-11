@@ -1,6 +1,11 @@
 package com.example.navgraphtest;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,31 +14,23 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
 import com.google.android.material.tabs.TabLayout;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
-
-import org.threeten.bp.LocalDate;
 
 import java.util.ArrayList;
 
 import static android.content.ContentValues.TAG;
 
 public class CalendarViewFragment extends Fragment {
-
+    ArrayList<CategoryModel> arrayList;
+    // Declarations
     private MaterialCalendarView mCalendarView;
     private CalendarDay currentDate;
     private TextView mTextViewCurrentDate;
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
-    ArrayList<CategoryModel> arrayList;
 
     @Override
     public void onResume() {
@@ -59,10 +56,8 @@ public class CalendarViewFragment extends Fragment {
                              Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView: ");
 
-
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_calendar_view, container, false);
-
 
 
     }
@@ -72,25 +67,30 @@ public class CalendarViewFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Log.d(TAG, "onViewCreated: ");
 
+        // Get textview to display date
         mTextViewCurrentDate = getActivity().findViewById(R.id.currentDateTextView);
+        // Get calendarview
         mCalendarView = getActivity().findViewById(R.id.calendarView);
-        mCalendarView.setOnDateChangedListener(new OnDateSelectedListener(){
+        // Set listener to update textview when a  day is selected
+        mCalendarView.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
                 mTextViewCurrentDate.setText(String.valueOf(date));
             }
 
         });
-
+        // Get NavController
         final NavController navController = Navigation.findNavController(view);
     }
 
-    private void initViews(){
+    private void initViews() {
         Log.d(TAG, "initViews: ");
-
+        // Get ViewPager.
         mViewPager = getActivity().findViewById(R.id.viewPagerCalendarView);
-        mTabLayout =  getActivity().findViewById(R.id.tabLayoutCalendarView);
+        // Get TabLayout
+        mTabLayout = getActivity().findViewById(R.id.tabLayoutCalendarView);
         mViewPager.setOffscreenPageLimit(5);
+        // Set up ViewPager to update based on tabs.
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
         mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -115,18 +115,18 @@ public class CalendarViewFragment extends Fragment {
 
     private void setDynamicFragmentToTabLayout() {
         DatabaseHelper databaseHelper = new DatabaseHelper(getActivity());
+        // arrayList of categories.
         arrayList = new ArrayList<CategoryModel>(databaseHelper.getCategories());
 
         Log.d(TAG, "setDynamicFragmentToTabLayout: ");
 
-        for (int i = 0; i < arrayList.size() ; i++) {
+        // For every category in the arrayList, create a new tab and set the appropriate name for the tab.
+        for (int i = 0; i < arrayList.size(); i++) {
 
             mTabLayout.addTab(mTabLayout.newTab().setText(arrayList.get(i).getCategoryTitle()));
         }
-
-
-
-        DynamicFragmentAdapter mDynamicFragmentAdapter = new DynamicFragmentAdapter(getActivity().getSupportFragmentManager(), mTabLayout.getTabCount());
+        // Call dynamicFragmentAdapter to create fragments for each tab.
+        DynamicFragmentAdapter mDynamicFragmentAdapter = new DynamicFragmentAdapter(getChildFragmentManager(), mTabLayout.getTabCount());
         mViewPager.setAdapter(mDynamicFragmentAdapter);
         mViewPager.setCurrentItem(0);
     }

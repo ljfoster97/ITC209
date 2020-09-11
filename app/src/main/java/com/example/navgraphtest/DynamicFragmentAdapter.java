@@ -7,8 +7,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import org.jetbrains.annotations.NotNull;
-
 
 public class DynamicFragmentAdapter extends FragmentStatePagerAdapter {
     private int mNumOfTabs;

@@ -1,17 +1,18 @@
 package com.example.navgraphtest;
 
 public class FoodItemModel {
+    // Declarations.
     String itemID;
     String categoryTitle;
     String itemName;
     int calories;
 
+    // Empty constructor.
     public FoodItemModel() {
 
     }
 
-
-
+    // Constructor.
     public FoodItemModel(String itemName, int calories, String categoryTitle) {
         this.itemID = itemID;
         this.itemName = itemName;
@@ -19,9 +20,7 @@ public class FoodItemModel {
         this.categoryTitle = categoryTitle;
     }
 
-
-
-
+    // getter and setter methods
     public String getItemID() {
         return itemID;
     }
@@ -46,8 +45,12 @@ public class FoodItemModel {
         this.calories = calories;
     }
 
-    public String getItemCategoryTitle() { return categoryTitle; }
+    public String getItemCategoryTitle() {
+        return categoryTitle;
+    }
 
-    public void setItemCategoryTitle(String categoryTitle) { this.categoryTitle = categoryTitle; }
+    public void setItemCategoryTitle(String categoryTitle) {
+        this.categoryTitle = categoryTitle;
+    }
 }
 

@@ -4,15 +4,6 @@ import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -22,6 +13,14 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -50,6 +49,7 @@ public class AddItemFromCategoryFragment extends Fragment {
         Log.d(TAG, "onViewCreated: ");
         super.onViewCreated(view, savedInstanceState);
 
+        // get components in layout
         recyclerView = getView().findViewById(R.id.recycler_view_items);
         actionButton = getView().findViewById(R.id.btn_additem_newitem);
         database_helper = new DatabaseHelper(getActivity());
@@ -66,7 +66,7 @@ public class AddItemFromCategoryFragment extends Fragment {
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         Log.d(TAG, "onResume: ");
         super.onResume();
         // Update ActionBar titles in MainActivity to reflect current fragment
@@ -90,6 +90,8 @@ public class AddItemFromCategoryFragment extends Fragment {
         Log.d(TAG, "showDialog: ");
         final EditText itemName, itemCalories;
         Button submit;
+
+        // Create new dialog window.
         final Dialog dialog = new Dialog(getActivity());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         WindowManager.LayoutParams params = new WindowManager.LayoutParams();
@@ -102,18 +104,21 @@ public class AddItemFromCategoryFragment extends Fragment {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
 
-        itemName = (EditText) dialog.findViewById(R.id.t_newitem_name);
-        itemCalories = (EditText) dialog.findViewById(R.id.t_newitem_calorievalue);
-        submit = (Button) dialog.findViewById(R.id.btn_newitem_submit);
+        // Get components in dialog_new_item
+        itemName = dialog.findViewById(R.id.t_newitem_name);
+        itemCalories = dialog.findViewById(R.id.t_newitem_calorievalue);
+        submit = dialog.findViewById(R.id.btn_newitem_submit);
 
-        submit.setOnClickListener(new View.OnClickListener() {;
+        submit.setOnClickListener(new View.OnClickListener() {
+            ;
+
             @Override
             public void onClick(View v) {
                 if (itemName.getText().toString().isEmpty()) {
                     itemName.setError("Please Enter Item Name");
-                }else if(itemCalories.getText().toString().isEmpty()) {
-                itemCalories.setError("Please Enter Item Calorie Value");
-                }else {
+                } else if (itemCalories.getText().toString().isEmpty()) {
+                    itemCalories.setError("Please Enter Item Calorie Value");
+                } else {
                     String name = itemName.getText().toString();
                     int calories = Integer.parseInt(itemCalories.getText().toString());
                     database_helper.addFoodItem(new FoodItemModel(name, calories, getArguments().getString("category_name")));

@@ -40,17 +40,22 @@
                     android:id="@+id/tabLayoutCalendarView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:tabMode="scrollable"
-                    app:tabGravity="center"/>
+                    app:tabGravity="center"
+                    app:tabMode="scrollable" />
 
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/viewPagerCalendarView"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="343dp">
+                android:layout_height="match_parent">
 
-            </androidx.viewpager.widget.ViewPager>
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewPagerCalendarView"
+                    android:layout_width="match_parent"
+                    android:layout_height="343dp">
+
+                </androidx.viewpager.widget.ViewPager>
+            </RelativeLayout>
 
         </LinearLayout>
 
