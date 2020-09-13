@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 // I don't have any prior experience with SQL or Databases in general so this may look really messy.
 
@@ -29,6 +30,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String KEY_ENTRY_ID = "entryID";
     private static final String KEY_DATE = "entryDate";
+
+    private static final ArrayList<String> DEFAULT_CATEGORIES
+            = new ArrayList<>(Arrays.asList("Breakfast", "Lunch", "Dinner", "Snacks"));
 
 
     public DatabaseHelper(Context context) {
@@ -78,6 +82,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         database.execSQL(CREATE_ITEMS_TABLE);
         database.execSQL(CREATE_ENTRY_TABLE);
 
+        // Insert default category values
+        ContentValues values = new ContentValues();
+        for (String i : DEFAULT_CATEGORIES) {
+            values.put("Title", i);
+            database.insert(TABLE_CATEGORIES, null, values);
+        }
+
 
     }
 
@@ -99,8 +110,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put("Title", title);
         //inserting new row
         database.insert(TABLE_CATEGORIES, null, values);
-        //close database connection.
-        database.close();
     }
 
     public void addFoodItem(FoodItemModel item) {
@@ -113,7 +122,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         database.insert(TABLE_ITEMS, null, values);
         // close database connection.
-        database.close();
+
     }
 
     public void addJournalEntry(JournalEntryModel entry) {
@@ -123,7 +132,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         values.put(KEY_DATE, entry.getEntryDate());
         values.put(KEY_ITEM_ID, entry.getItemID());
-
     }
 
     public ArrayList<FoodItemModel> getJournalEntries(String date, String category) {
@@ -152,7 +160,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         return items;
-
     }
 
     //Getting a FoodItem by ID:
@@ -191,7 +198,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
         database.delete(TABLE_ITEMS, KEY_ITEM_ID + " = ?",
                 new String[]{String.valueOf(item.getItemID())});
-        database.close();
+
     }
 
     public ArrayList<FoodItemModel> getAllFoodItems() {
@@ -288,7 +295,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
         //deleting row
         database.delete(TABLE_CATEGORIES, "ID=" + ID, null);
-        database.close();
+
     }
 
     //update the category
@@ -299,7 +306,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         //updating row
         database.update(TABLE_CATEGORIES, values, "ID=" + ID, null);
-        database.close();
+
     }
 
 
