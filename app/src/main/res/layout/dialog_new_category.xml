@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:layout_margin="15dp"
-    android:background="@android:color/white"
+    android:background="@color/cardview_light_background"
     android:orientation="vertical">
 
     <EditText
@@ -24,7 +24,7 @@
         android:layout_gravity="center"
         android:layout_margin="10dp"
         android:layout_marginBottom="10dp"
-        android:background="@android:color/holo_blue_dark"
+        android:background="@color/red_imperial"
         android:text="Submit"
         android:textColor="@android:color/white" />
 

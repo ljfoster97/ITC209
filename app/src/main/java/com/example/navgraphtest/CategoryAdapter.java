@@ -80,6 +80,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.viewHo
                 database_helper.deleteCategory(arrayList.get(position).getCategoryID());
                 arrayList.remove(position);
                 notifyDataSetChanged();
+                Toast.makeText(context, "Category Deleted", Toast.LENGTH_SHORT).show();
             }
         });
 

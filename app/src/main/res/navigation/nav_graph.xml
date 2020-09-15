@@ -31,7 +31,7 @@
         android:id="@+id/mainActivity"
         android:name="com.example.navgraphtest.MainActivity"
         android:label="activity_main"
-        tools:layout="@layout/activity_main" />
+        tools:layout="@layout/activity_home" />
     <fragment
         android:id="@+id/calendarViewFragment"
         android:name="com.example.navgraphtest.CalendarViewFragment"
