@@ -31,6 +31,7 @@ public class CalendarViewFragment extends Fragment {
     private TextView mTextViewCurrentDate;
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
+    View view;
 
     @Override
     public void onResume() {
@@ -44,18 +45,21 @@ public class CalendarViewFragment extends Fragment {
         // Open fragment with today's date selected on calendarview.
         mCalendarView.setSelectedDate(CalendarDay.today());
 
-        // initViews for category tabs
-        initViews();
+
 
 
     }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView: ");
-
+        if (view != null) {
+            if ((ViewGroup)view.getParent() != null)
+                ((ViewGroup)view.getParent()).removeView(view);
+            return view;
+        }
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_calendar_view, container, false);
 
@@ -66,6 +70,9 @@ public class CalendarViewFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Log.d(TAG, "onViewCreated: ");
+
+        // initViews for category tabs
+        initViews();
 
         // Get textview to display date
         mTextViewCurrentDate = getActivity().findViewById(R.id.currentDateTextView);
@@ -79,6 +86,7 @@ public class CalendarViewFragment extends Fragment {
             }
 
         });
+
         // Get NavController
         final NavController navController = Navigation.findNavController(view);
     }
@@ -110,6 +118,7 @@ public class CalendarViewFragment extends Fragment {
         });
 
         setDynamicFragmentToTabLayout();
+
 
     }
 

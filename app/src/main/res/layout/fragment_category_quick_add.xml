@@ -10,7 +10,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_categories"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="650dp"
+        android:layout_above="@+id/btn_category_add"
+        >
+
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -18,9 +21,7 @@
         android:id="@+id/btn_category_add"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_below="@+id/recycler_view_categories"
-        android:layout_marginTop="14dp"
+        android:layout_alignParentBottom="true"
         android:text="Create New Category" />
-
 
 </RelativeLayout>

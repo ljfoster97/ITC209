@@ -6,4 +6,5 @@
         android:icon="@drawable/ic_baseline_settings_24"
         android:title="Settings"
         android:visible="true" />
+    <item android:title="About" />
 </menu>

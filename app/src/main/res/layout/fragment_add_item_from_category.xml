@@ -5,18 +5,19 @@
     android:layout_height="match_parent"
     tools:context="AddItemFromCategoryFragment">
 
-    <Button
-        android:id="@+id/btn_additem_newitem"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_below="@+id/recycler_view_items"
-        android:layout_marginTop="14dp"
-        android:text="Create New Category" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_items"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/btn_additem_newitem"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:layout_alignParentBottom="true"
+
+        android:text="Create New Item" />
 </RelativeLayout>

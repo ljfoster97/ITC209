@@ -74,6 +74,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.viewHolder> {
                 databaseHelper.deleteFoodItem(arrayList.get(position));
                 arrayList.remove(position);
                 notifyDataSetChanged();
+                Toast.makeText(context, "Item Deleted",Toast.LENGTH_SHORT).show();
             }
         });
 

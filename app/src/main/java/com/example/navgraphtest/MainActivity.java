@@ -18,22 +18,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_main);
         setUpNavigation();
 
     }
 
-    // Simple method to update actionbar title from within a fragment
-    public void setActionBarTitle(String title) {
-        getSupportActionBar().setTitle(title);
-    }
 
     public void setUpNavigation() {
         // Find the toolbar view inside the activity layout
         Toolbar toolbar = findViewById(R.id.toolbar);
+
         // Sets the Toolbar to act as the ActionBar for this Activity window.
         // Make sure the toolbar exists in the activity and is not null
         setSupportActionBar(toolbar);
+
         // Set toolbar title
         toolbar.setTitle("Home Screen");
 
@@ -43,6 +41,21 @@ public class MainActivity extends AppCompatActivity {
                 .findFragmentById(R.id.nav_host_fragment);
 
         NavigationUI.setupWithNavController(bottomNavigationView, navHostFragment.getNavController());
+
+        BottomNavigationView.OnNavigationItemReselectedListener listener =
+                new BottomNavigationView.OnNavigationItemReselectedListener() {
+            @Override
+            public void onNavigationItemReselected(@NonNull MenuItem item) {
+            // do nothing here to prevent fragment being recreated when bottomNavigationView items are reselected.
+            }
+        };
+
+        bottomNavigationView.setOnNavigationItemReselectedListener(listener);
+    }
+
+    // Simple method to update actionbar title from within a fragment
+    public void setActionBarTitle(String title) {
+        getSupportActionBar().setTitle(title);
     }
 
     @Override
