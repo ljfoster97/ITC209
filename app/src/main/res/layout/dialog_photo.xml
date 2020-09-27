@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="8dp"
         android:text="Change Photo"
         android:textAlignment="viewStart"
         android:textSize="24sp"
@@ -24,22 +24,23 @@
     <TextView
         android:id="@+id/tv_takePhoto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="64dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginBottom="24dp"
         android:foreground="?attr/selectableItemBackgroundBorderless"
-        android:text="Take new photo"
+        android:gravity="center_vertical"
+        android:text="Take New Photo"
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tv_choosePhoto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="64dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:foreground="?attr/selectableItemBackgroundBorderless"
-        android:text="Choose from gallery"
+        android:gravity="center_vertical"
+        android:text="Choose From Gallery"
         android:textSize="18sp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,8 +54,10 @@
             android:layout_margin="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/red_imperial"
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:text="Cancel"
+            android:textColor="@color/blue_offwhite"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
