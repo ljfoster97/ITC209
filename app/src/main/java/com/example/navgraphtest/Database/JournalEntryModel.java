@@ -1,4 +1,4 @@
-package com.example.navgraphtest;
+package com.example.navgraphtest.Database;
 
 public class JournalEntryModel {
     String entryID;

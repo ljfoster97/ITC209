@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="AddItemFromCategoryFragment">
+    tools:context=".Fragments.AddItemFromCategoryFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_items"
@@ -16,8 +16,8 @@
         android:id="@+id/btn_additem_newitem"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="12dp"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="12dp"
 
-        android:text="Create New Item" />
+        android:text="@string/create_new_item" />
 </RelativeLayout>

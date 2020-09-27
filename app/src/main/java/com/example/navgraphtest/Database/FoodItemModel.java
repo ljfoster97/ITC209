@@ -1,11 +1,17 @@
-package com.example.navgraphtest;
+package com.example.navgraphtest.Database;
 
+/**
+ * Model of food items within the DB.
+ * A "Food Item" can be any meal or object.
+ * I.e a piece of fruit such as a Banana, or a Big Mac from McDonald's.
+ */
 public class FoodItemModel {
     // Declarations.
-    String itemID;
-    String categoryTitle;
-    String itemName;
-    int calories;
+    private String itemID;
+    private String categoryTitle;
+    private String itemName;
+    int itemCalories;
+    private byte[] itemPhoto;
 
     // Empty constructor.
     public FoodItemModel() {
@@ -13,11 +19,12 @@ public class FoodItemModel {
     }
 
     // Constructor.
-    public FoodItemModel(String itemName, int calories, String categoryTitle) {
+    public FoodItemModel(String itemName, int itemCalories, String categoryTitle, byte[] itemPhoto) {
         this.itemID = itemID;
         this.itemName = itemName;
-        this.calories = calories;
+        this.itemCalories = itemCalories;
         this.categoryTitle = categoryTitle;
+        this.itemPhoto = itemPhoto;
     }
 
     // getter and setter methods
@@ -38,11 +45,11 @@ public class FoodItemModel {
     }
 
     public int getItemCalories() {
-        return calories;
+        return itemCalories;
     }
 
     public void setItemCalories(int calories) {
-        this.calories = calories;
+        this.itemCalories = calories;
     }
 
     public String getItemCategoryTitle() {
@@ -51,6 +58,14 @@ public class FoodItemModel {
 
     public void setItemCategoryTitle(String categoryTitle) {
         this.categoryTitle = categoryTitle;
+    }
+
+    public byte[] getPhoto() {
+        return itemPhoto;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.itemPhoto = photo;
     }
 }
 

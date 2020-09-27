@@ -1,4 +1,4 @@
-package com.example.navgraphtest;
+package com.example.navgraphtest.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.example.navgraphtest.Activities.MainActivity;
+import com.example.navgraphtest.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.jjoe64.graphview.GraphView;
 
@@ -39,14 +41,6 @@ public class HomeScreenFragment extends Fragment {
         // Get the navController.
         final NavController navController = Navigation.findNavController(view);
 
-        // Set onClickListener to navigate to CategoryQuickAddFragment when FAB is clicked using navController.
-        FloatingActionButton fab = view.findViewById(R.id.floatingActionButton);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navController.navigate(R.id.action_homeScreenFragment_to_categoryQuickAddFragment);
-            }
-        });
 
         // Set onClickListener to navigate to the calendarViewFragment when graph is clicked using navController.
         GraphView graph = view.findViewById(R.id.graphView);

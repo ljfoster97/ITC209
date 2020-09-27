@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
@@ -7,23 +9,88 @@
     android:background="@android:color/white"
     android:orientation="vertical">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="8">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="308dp"
+                android:layout_height="25dp"
+                android:layout_weight="8"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_photo_dialog"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.932"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.911"
+                app:srcCompat="@drawable/ic_edit_black_24dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_photo_dialog"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="@dimen/mcv_arrow_padding"
+                android:layout_marginTop="16dp"
+                android:layout_weight="8"
+                android:contentDescription="item_photo"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_baseline_insert_photo_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/enter_item_name"
+        android:textSize="18sp" />
+
     <EditText
         android:id="@+id/t_newitem_name"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="20sp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="20dp"
+        android:autofillHints=""
         android:background="@android:drawable/dialog_holo_light_frame"
-        android:hint="Enter Item Name"
+        android:hint="i.e. Big Mac"
         android:inputType="text"
         android:padding="15dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:text="@string/enter_calorie_value"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/t_newitem_calorievalue"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="20sp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="20dp"
+        android:autofillHints=""
         android:background="@android:drawable/dialog_holo_light_frame"
-        android:hint="Enter Calorie Value"
+        android:hint="i.e. 563"
         android:inputType="number"
         android:padding="15dp" />
 
@@ -33,9 +100,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@android:color/holo_blue_dark"
-        android:text="Submit"
+        android:layout_marginBottom="16dp"
+        android:background="@color/red_imperial"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:text="@string/submit"
         android:textColor="@android:color/white" />
 
 </LinearLayout>

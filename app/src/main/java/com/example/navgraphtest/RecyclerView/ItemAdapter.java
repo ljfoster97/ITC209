@@ -1,8 +1,10 @@
-package com.example.navgraphtest;
+package com.example.navgraphtest.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
@@ -18,8 +20,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.navgraphtest.Activities.MainActivity;
+import com.example.navgraphtest.Database.DatabaseHelper;
+import com.example.navgraphtest.Database.FoodItemModel;
+import com.example.navgraphtest.R;
+
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.viewHolder> {
@@ -43,26 +53,48 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.viewHolder> {
         return new viewHolder(view);
     }
 
+    // setting up list_item layout with viewHolder
+    public class viewHolder extends RecyclerView.ViewHolder {
+        TextView title, calories;
+        ImageView delete, edit, photo;
+
+        public viewHolder(View itemView) {
+            super(itemView);
+            // Get components in list_item layout.
+            title = itemView.findViewById(R.id.title);
+            calories = itemView.findViewById(R.id.description);
+            delete = itemView.findViewById(R.id.delete);
+            photo = itemView.findViewById(R.id.iv_photo_item);
+        }
+    }
+
     // Databinding
     @Override
     public void onBindViewHolder(final ItemAdapter.viewHolder holder, @SuppressLint("RecyclerView") final int position) {
         // Get the itemName and calorieValue for item at current position in the ArrayList of foodItems.
         final String itemName = (arrayList.get(position).getItemName());
         final int calorieValue = (arrayList.get(position).getItemCalories());
+        final byte[] photo = (arrayList.get(position).getPhoto());
+
+        // Convert BLOB to bitmap and display in the items ImageView
+        ByteArrayInputStream imageStream = new ByteArrayInputStream(photo);
+        Bitmap bitmap= BitmapFactory.decodeStream(imageStream);
+        holder.photo.setImageBitmap(bitmap);
 
         // Set title and calorie within the list_item layout.
         holder.title.setText(itemName);
-        holder.calories.setText(String.valueOf(calorieValue));
+        String calorieValueString = calorieValue + " Calories";
+        holder.calories.setText(String.valueOf(calorieValueString));
 
         databaseHelper = new DatabaseHelper(context);
 
-        // Testing recyclerView.
-        holder.title.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context, itemName, Toast.LENGTH_SHORT).show();
-            }
-        });
+//        // Testing recyclerView.
+//        holder.title.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(context, itemName, Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         // Set up onClickListener with databaseHelper for delete icon.
         holder.delete.setOnClickListener(new View.OnClickListener() {
@@ -78,14 +110,22 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.viewHolder> {
             }
         });
 
-        // Open dialog with current value for edit icon.
-        holder.edit.setOnClickListener(new View.OnClickListener() {
-            ;
+//        // Open dialog with current value for edit icon.
+//        holder.edit.setOnClickListener(new View.OnClickListener() {;
+//            @Override
+//            public void onClick(View v) {
+//                //display edit dialog_new_category
+//                showDialog(position);
+//            }
+//        });
 
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onLongClick(View v) {
+                Toast.makeText(context,"item has been clicked",Toast.LENGTH_LONG).show();
                 //display edit dialog_new_category
                 showDialog(position);
+                return false;
             }
         });
     }
@@ -97,8 +137,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.viewHolder> {
 
     // Dialog box for creating/editing items.
     // Essentially the same as the one in CategoryAdapter.
-    public void showDialog(final int pos) {
+    public void showDialog(final int position) {
         final EditText title, calories;
+        ImageView imageView;
         Button submit;
 
         // Creating new dialog window.
@@ -118,10 +159,17 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.viewHolder> {
         title = dialog.findViewById(R.id.t_newitem_name);
         calories = dialog.findViewById(R.id.t_newitem_calorievalue);
         submit = dialog.findViewById(R.id.btn_newitem_submit);
+        imageView = dialog.findViewById(R.id.iv_photo_dialog);
 
         // Set to current values
-        title.setText(arrayList.get(pos).getItemName());
-        calories.setText(String.valueOf(arrayList.get(pos).getItemCalories()));
+        title.setText(arrayList.get(position).getItemName());
+        calories.setText(String.valueOf(arrayList.get(position).getItemCalories()));
+
+        // Convert BLOB to bitmap and display in the items ImageView
+        final byte[] photo = (arrayList.get(position).getPhoto());
+        ByteArrayInputStream imageStream = new ByteArrayInputStream(photo);
+        Bitmap bitmap= BitmapFactory.decodeStream(imageStream);
+        imageView.setImageBitmap(bitmap);
 
         submit.setOnClickListener(new View.OnClickListener() {
             ;
@@ -136,9 +184,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.viewHolder> {
                     calories.setError("Please Enter Item Calorie Value");
                 } else {
                     // Updating the item within db
-                    databaseHelper.updateFoodItem(arrayList.get(pos));
-                    arrayList.get(pos).setItemName(title.getText().toString());
-                    arrayList.get(pos).setItemCalories(Integer.parseInt(calories.getText().toString()));
+                    databaseHelper.updateFoodItem(arrayList.get(position));
+                    arrayList.get(position).setItemName(title.getText().toString());
+                    arrayList.get(position).setItemCalories(Integer.parseInt(calories.getText().toString()));
                     dialog.cancel();
 
                     // Update
@@ -148,18 +196,4 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.viewHolder> {
         });
     }
 
-    // setting up list_item layout with viewHolder
-    public class viewHolder extends RecyclerView.ViewHolder {
-        TextView title, calories;
-        ImageView delete, edit;
-
-        public viewHolder(View itemView) {
-            super(itemView);
-            // Get components in list_item layout.
-            title = itemView.findViewById(R.id.title);
-            calories = itemView.findViewById(R.id.description);
-            delete = itemView.findViewById(R.id.delete);
-            edit = itemView.findViewById(R.id.edit);
-        }
-    }
 }

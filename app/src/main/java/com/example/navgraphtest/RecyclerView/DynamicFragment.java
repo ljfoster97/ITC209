@@ -1,4 +1,4 @@
-package com.example.navgraphtest;
+package com.example.navgraphtest.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,6 +14,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.navgraphtest.Database.DatabaseHelper;
+import com.example.navgraphtest.Database.FoodItemModel;
+import com.example.navgraphtest.R;
 
 import org.jetbrains.annotations.NotNull;
 

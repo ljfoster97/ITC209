@@ -1,4 +1,4 @@
-package com.example.navgraphtest;
+package com.example.navgraphtest.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -21,6 +21,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.navgraphtest.Database.CategoryModel;
+import com.example.navgraphtest.Database.DatabaseHelper;
+import com.example.navgraphtest.R;
 
 import java.util.ArrayList;
 
@@ -60,7 +64,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.viewHo
 
         database_helper = new DatabaseHelper(context);
 
-        holder.title.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, title, Toast.LENGTH_SHORT).show();
@@ -84,14 +88,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.viewHo
             }
         });
 
-        // Set up edit icon.
-        holder.edit.setOnClickListener(new View.OnClickListener() {
-            ;
 
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View v) {
-                // Open dialog for current item
+            public boolean onLongClick(View v) {
+                Toast.makeText(context,"item has been clicked",Toast.LENGTH_LONG).show();
+                //display edit dialog_new_category
                 showDialog(position);
+                return false;
             }
         });
     }
@@ -148,16 +152,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.viewHo
     }
 
     public class viewHolder extends RecyclerView.ViewHolder {
-        Button button;
         TextView title;
-        ImageView delete, edit;
+        ImageView delete;
 
         public viewHolder(View itemView) {
             super(itemView);
 
             title = itemView.findViewById(R.id.title);
             delete = itemView.findViewById(R.id.delete);
-            edit = itemView.findViewById(R.id.edit);
         }
     }
 }

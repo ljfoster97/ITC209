@@ -2,4 +2,25 @@
     <string name="app_name">NavGraphTest</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+
+    <string name="settings">Settings</string>
+    <string name="about">About</string>
+    <string name="view_consumption_history">View consumption history</string>
+    <string name="calendar">Calendar</string>
+    <string name="track_today_s_consumption">Track today\'s consumption</string>
+    <string name="home">Home</string>
+    <string name="create_and_edit_food_items">Create and edit food items</string>
+    <string name="food">Food</string>
+    <string name="submit">Submit</string>
+    <string name="enter_category_name">Enter Category Name</string>
+    <string name="enter_item_name">Enter Item Name</string>
+    <string name="enter_calorie_value">Enter Calorie Value</string>
+    <string name="textview">TextView</string>
+    <string name="create_new_item">Create New Item</string>
+    <string name="create_new_category">Create New Category</string>
+    <string name="edit_name">Edit Name</string>
+    <string name="delete_category">Delete Category</string>
+    <string name ="calories">Calories</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.navgraphtest;
+package com.example.navgraphtest.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,6 +11,11 @@ import java.util.Arrays;
 
 // I don't have any prior experience with SQL or Databases in general so this may look really messy.
 
+/**
+ * DatabaseHelper
+ * Contains all necessary functions for creating/updating the local DB with SQLite,
+ * and for creating models from the DB data.
+ */
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Easier to keep track of values with fields declared here.
@@ -25,6 +30,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String KEY_ITEM_NAME = "itemName";
     private static final String KEY_ITEM_CALORIES = "itemCalories";
     private static final String KEY_CATEGORY = "categoryTitle";
+    private static final String KEY_PHOTO = "itemPhoto";
 
     private static final String TABLE_ENTRIES = "journalEntries";
 
@@ -61,6 +67,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         + KEY_ITEM_NAME + " TEXT,"
                         + KEY_ITEM_CALORIES + " TEXT,"
                         + KEY_CATEGORY + " TEXT,"
+                        + KEY_PHOTO + " BLOB,"
 
                         + "FOREIGN KEY (" + KEY_CATEGORY + ") REFERENCES " + TABLE_CATEGORIES + "(Title)"
 
@@ -119,6 +126,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(KEY_ITEM_NAME, item.getItemName());
         values.put(KEY_ITEM_CALORIES, item.getItemCalories());
         values.put(KEY_CATEGORY, item.getItemCategoryTitle());
+        values.put(KEY_PHOTO, item.getPhoto());
 
         database.insert(TABLE_ITEMS, null, values);
         // close database connection.
@@ -154,6 +162,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 item.setItemName(cursor.getString(1));
                 item.setItemCalories(Integer.parseInt(cursor.getString(2)));
                 item.setItemCategoryTitle(cursor.getString(3));
+                item.setPhoto(cursor.getBlob(4));
                 //Add item to list:
                 items.add(item);
             } while (cursor.moveToNext());
@@ -177,6 +186,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         item.setItemName(cursor.getString(1));
         item.setItemCalories(Integer.parseInt(cursor.getString(2)));
         item.setItemCategoryTitle(cursor.getString(3));
+        item.setPhoto(cursor.getBlob(4));
 
         return item;
     }
@@ -217,6 +227,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 item.setItemName(cursor.getString(1));
                 item.setItemCalories(Integer.parseInt(cursor.getString(2)));
                 item.setItemCategoryTitle(cursor.getString(3));
+                item.setPhoto(cursor.getBlob(4));
                 //Add item to list:
                 items.add(item);
             } while (cursor.moveToNext());
@@ -241,6 +252,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 item.setItemName(cursor.getString(1));
                 item.setItemCalories(Integer.parseInt(cursor.getString(2)));
                 item.setItemCategoryTitle(cursor.getString(3));
+                item.setPhoto(cursor.getBlob(4));
 
                 // add item to the list
                 items.add(item);
@@ -290,21 +302,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return arrayList;
     }
 
-    //delete the category
+    // Delete the category.
     public void deleteCategory(String ID) {
         SQLiteDatabase database = this.getWritableDatabase();
-        //deleting row
+        // Deleting row.
         database.delete(TABLE_CATEGORIES, "ID=" + ID, null);
 
     }
 
-    //update the category
+    // Update the category.
     public void updateCategory(String title, String ID) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("Title", title);
 
-        //updating row
+        // Updating row.
         database.update(TABLE_CATEGORIES, values, "ID=" + ID, null);
 
     }

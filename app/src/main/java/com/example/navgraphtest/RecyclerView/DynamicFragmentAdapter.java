@@ -1,4 +1,4 @@
-package com.example.navgraphtest;
+package com.example.navgraphtest.RecyclerView;
 
 import android.os.Bundle;
 
@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 public class DynamicFragmentAdapter extends FragmentStatePagerAdapter {
     private int mNumOfTabs;
 
-    DynamicFragmentAdapter(FragmentManager fm, int NumOfTabs) {
+    public DynamicFragmentAdapter(FragmentManager fm, int NumOfTabs) {
         super(fm);
         this.mNumOfTabs = NumOfTabs;
     }

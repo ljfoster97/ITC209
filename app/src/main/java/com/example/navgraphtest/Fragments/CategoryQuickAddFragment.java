@@ -1,4 +1,4 @@
-package com.example.navgraphtest;
+package com.example.navgraphtest.Fragments;
 
 import android.app.Dialog;
 import android.graphics.Color;
@@ -23,6 +23,12 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.navgraphtest.Database.CategoryModel;
+import com.example.navgraphtest.Database.DatabaseHelper;
+import com.example.navgraphtest.Activities.MainActivity;
+import com.example.navgraphtest.R;
+import com.example.navgraphtest.RecyclerView.CategoryAdapter;
 
 import java.util.ArrayList;
 

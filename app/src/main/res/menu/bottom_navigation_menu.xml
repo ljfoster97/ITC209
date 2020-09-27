@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/calendarViewFragment"
-        android:contentDescription="View consumption history"
+        android:contentDescription="@string/view_consumption_history"
         android:icon="@drawable/ic_calendar"
-        android:title="Calendar" />
+        android:title="@string/calendar" />
     <item
         android:id="@+id/homeScreenFragment"
-        android:contentDescription="Track today's consumption"
+        android:contentDescription="@string/track_today_s_consumption"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:title="@string/home" />
     <item
         android:id="@+id/categoryQuickAddFragment"
-        android:contentDescription="Create and edit food items"
+        android:contentDescription="@string/create_and_edit_food_items"
         android:icon="@drawable/ic_food"
-        android:title="Food" />
+        android:title="@string/food" />
 </menu>

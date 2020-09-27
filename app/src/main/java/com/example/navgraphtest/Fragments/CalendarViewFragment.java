@@ -1,4 +1,4 @@
-package com.example.navgraphtest;
+package com.example.navgraphtest.Fragments;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +14,11 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.navgraphtest.Database.CategoryModel;
+import com.example.navgraphtest.Database.DatabaseHelper;
+import com.example.navgraphtest.Activities.MainActivity;
+import com.example.navgraphtest.R;
+import com.example.navgraphtest.RecyclerView.DynamicFragmentAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cardview_light_background"
-    tools:context=".MainActivity"
+    tools:context=".Activities.MainActivity"
     tools:ignore="PrivateResource">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -22,6 +22,6 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:text="Create New Category" />
+        android:text="@string/create_new_category" />
 
 </RelativeLayout>
