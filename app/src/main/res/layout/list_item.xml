@@ -31,8 +31,8 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/iv_photo_item"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     card_view:layout_constraintStart_toStartOf="parent"
                     card_view:layout_constraintTop_toTopOf="parent"
                     card_view:srcCompat="@android:mipmap/sym_def_app_icon" />
@@ -42,6 +42,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:layout_marginTop="2dp"
                     android:maxLines="1"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"

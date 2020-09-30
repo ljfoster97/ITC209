@@ -21,14 +21,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_photo_dialog4"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_weight="8"
+        android:contentDescription="item_photo"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/no_image_icon_0"
+        app:layout_constraintBottom_toTopOf="@+id/genderLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingsLabel" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="152dp"
+        android:layout_height="33dp"
+        android:layout_weight="8"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_photo_dialog4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.625"
+        app:layout_constraintStart_toStartOf="@+id/iv_photo_dialog4"
+        app:layout_constraintTop_toTopOf="@+id/iv_photo_dialog4"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/ic_edit_black_24dp" />
+
     <TextView
         android:id="@+id/genderLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="124dp"
         android:text="Gender"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/settingsLabel" />
 
     <RadioGroup
         android:id="@+id/gender_radio_group"
@@ -158,6 +185,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="18dp"
         android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/red_imperial"
         android:text="Reset"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -168,21 +196,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/red_imperial"
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/saveButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settingsLabel"
-        app:layout_constraintVertical_bias="0.0"
-        tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
