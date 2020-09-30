@@ -10,7 +10,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/genderLabel2"
+        android:id="@+id/label_gender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -31,7 +31,7 @@
         tools:layout_editor_absoluteY="238dp" />
 
     <RadioButton
-        android:id="@+id/isFemale2"
+        android:id="@+id/rb_female"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="8"
@@ -40,7 +40,7 @@
         tools:layout_editor_absoluteY="238dp" />
 
     <TextView
-        android:id="@+id/genderLabel3"
+        android:id="@+id/label_age"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -51,7 +51,7 @@
         app:layout_constraintTop_toBottomOf="@+id/settingsLabel" />
 
     <EditText
-        android:id="@+id/input_age"
+        android:id="@+id/editText_age"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -66,7 +66,7 @@
         app:layout_constraintTop_toBottomOf="@+id/heightLabel" />
 
     <TextView
-        android:id="@+id/heightLabel2"
+        android:id="@+id/label_height"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -77,7 +77,7 @@
         app:layout_constraintTop_toBottomOf="@+id/gender_radio_group" />
 
     <EditText
-        android:id="@+id/height2"
+        android:id="@+id/editText_height"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -92,7 +92,7 @@
         app:layout_constraintTop_toBottomOf="@+id/heightLabel" />
 
     <TextView
-        android:id="@+id/startingWeightLabel2"
+        android:id="@+id/label_weight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -103,7 +103,7 @@
         app:layout_constraintTop_toBottomOf="@+id/height" />
 
     <EditText
-        android:id="@+id/startingWeight2"
+        android:id="@+id/editText_weight"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
@@ -116,21 +116,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/startingWeightLabel" />
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="8" />
-
     <Button
-        android:id="@+id/btn_newitem_submit"
-        android:layout_width="200dp"
+        android:id="@+id/btn_tdee_submit"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:layout_marginBottom="20dp"
+        android:layout_weight="8"
         android:background="@color/red_imperial"
         android:foreground="?attr/selectableItemBackgroundBorderless"
         android:text="@string/submit"
         android:textColor="@android:color/white" />
-
 </LinearLayout>
