@@ -60,7 +60,7 @@
         android:autofillHints=""
         android:ems="10"
         android:inputType="number"
-        android:maxLength="2"
+        android:maxLength="3"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/heightLabel" />
@@ -86,7 +86,7 @@
         android:autofillHints=""
         android:ems="10"
         android:inputType="number"
-        android:maxLength="2"
+        android:maxLength="3"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/heightLabel" />
@@ -110,8 +110,7 @@
         android:layout_marginTop="8dp"
         android:layout_weight="8"
         android:ems="10"
-        android:inputType="number"
-        android:maxLength="3"
+        android:inputType="number|numberDecimal"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/startingWeightLabel" />
