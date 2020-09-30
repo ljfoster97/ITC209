@@ -12,7 +12,7 @@
         android:id="@+id/btn_calculate_tdee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="500dp"
         android:backgroundTint="@color/red_imperial"
         android:text="Calculate My TDEE"
@@ -138,10 +138,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:ems="10"
         android:focusable="false"
         android:inputType="date"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/saveButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/goalDateLabel" />
 
@@ -181,7 +183,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/tv_BMI"
+        android:id="@+id/tv_BMI_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -190,21 +192,21 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_calculate_tdee" />
 
     <TextView
-        android:id="@+id/tv_BMR"
+        android:id="@+id/tv_BMR_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toEndOf="@+id/btn_calculate_tdee"
-        app:layout_constraintTop_toBottomOf="@+id/tv_BMI" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_BMI_result" />
 
     <TextView
-        android:id="@+id/tv_TDEE"
+        android:id="@+id/tv_TDEE_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toEndOf="@+id/btn_calculate_tdee"
-        app:layout_constraintTop_toBottomOf="@+id/tv_BMR" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_BMR_result" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

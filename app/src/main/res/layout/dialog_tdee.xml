@@ -20,24 +20,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settingsLabel" />
 
-    <RadioButton
-        android:id="@+id/rb_male"
+    <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="8"
-        android:checked="true"
-        android:text="@string/male"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="238dp" />
+        android:checkedButton="@id/rb_male">
 
-    <RadioButton
-        android:id="@+id/rb_female"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="8"
-        android:text="@string/female"
-        tools:layout_editor_absoluteX="214dp"
-        tools:layout_editor_absoluteY="238dp" />
+        <RadioButton
+            android:id="@+id/rb_male"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:checked="true"
+            android:text="@string/male"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="238dp" />
+
+        <RadioButton
+            android:id="@+id/rb_female"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:text="@string/female"
+            tools:layout_editor_absoluteX="214dp"
+            tools:layout_editor_absoluteY="238dp" />
+    </RadioGroup>
 
     <TextView
         android:id="@+id/label_age"
@@ -116,7 +123,7 @@
         app:layout_constraintTop_toBottomOf="@+id/startingWeightLabel" />
 
     <Button
-        android:id="@+id/btn_tdee_submit"
+        android:id="@+id/btn_this_is_a_unique_button_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
