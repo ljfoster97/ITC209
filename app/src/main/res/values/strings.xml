@@ -22,5 +22,11 @@
     <string name="create_new_category">Create New Category</string>
     <string name="edit_name">Edit Name</string>
     <string name="delete_category">Delete Category</string>
-    <string name ="calories">Calories</string>
+    <string name="calories">Calories</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="age">Age</string>
+    <string name="height_cm">Height (CM)</string>
+    <string name="weight_kg">Weight (KG)</string>
 </resources>

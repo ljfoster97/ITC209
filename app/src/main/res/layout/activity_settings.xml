@@ -8,6 +8,49 @@
     android:layout_height="match_parent"
     tools:context=".Activities.SettingsActivity">
 
+    <Button
+        android:id="@+id/btn_calculate_tdee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="500dp"
+        android:backgroundTint="@color/red_imperial"
+        android:text="Calculate My TDEE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_photo_dialog4" />
+
+    <TextView
+        android:id="@+id/label_BMI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="My Body Mass Index"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_calculate_tdee" />
+
+    <TextView
+        android:id="@+id/label_BMR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Basal Metabolic Rate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_BMI" />
+
+    <TextView
+        android:id="@+id/label_TDEE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Total Daily Energy Expenditure"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_BMR" />
+
     <TextView
         android:id="@+id/settingsLabel"
         android:layout_width="107dp"
@@ -29,7 +72,6 @@
         android:contentDescription="item_photo"
         android:foreground="?attr/selectableItemBackgroundBorderless"
         android:src="@drawable/no_image_icon_0"
-        app:layout_constraintBottom_toTopOf="@+id/genderLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settingsLabel" />
@@ -47,85 +89,12 @@
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/ic_edit_black_24dp" />
 
-    <TextView
-        android:id="@+id/genderLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="124dp"
-        android:text="Gender"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settingsLabel" />
-
-    <RadioGroup
-        android:id="@+id/gender_radio_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/genderLabel">
-
-        <RadioButton
-            android:id="@+id/isMale"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:checked="true"
-            android:text="Male"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="238dp" />
-
-        <RadioButton
-            android:id="@+id/isFemale"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Female"
-            tools:layout_editor_absoluteX="214dp"
-            tools:layout_editor_absoluteY="238dp" />
-    </RadioGroup>
-
-    <TextView
-        android:id="@+id/heightLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:text="Height"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gender_radio_group" />
-
     <EditText
-        android:id="@+id/height"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="number"
-        android:maxLength="2"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/heightLabel" />
-
-    <TextView
-        android:id="@+id/startingWeightLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:text="Start Weight"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/height" />
-
-    <EditText
-        android:id="@+id/startingWeight"
+        android:id="@+id/editText_starting_weight"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="number"
         android:maxLength="3"
@@ -133,51 +102,61 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/startingWeightLabel" />
 
-    <EditText
-        android:id="@+id/goalWeight"
+    <TextView
+        android:id="@+id/startingWeightLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="number"
-        android:maxLength="3"
-        android:textSize="18sp"
+        android:layout_marginTop="32dp"
+        android:text="Start Weight"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goalWeightLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/label_TDEE" />
 
     <TextView
         android:id="@+id/goalWeightLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:text="Goal Weight"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startingWeight" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_starting_weight" />
 
     <TextView
         android:id="@+id/goalDateLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:text="Goal Date"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goalWeight" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_goal_weight" />
 
     <EditText
-        android:id="@+id/goalDate"
+        android:id="@+id/editText_goal_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:focusable="false"
         android:inputType="date"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/goalDateLabel" />
+
+    <EditText
+        android:id="@+id/editText_goal_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="number"
+        android:maxLength="3"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goalWeightLabel" />
 
     <Button
         android:id="@+id/reset_button"
@@ -200,5 +179,32 @@
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_BMI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toEndOf="@+id/btn_calculate_tdee"
+        app:layout_constraintTop_toBottomOf="@+id/btn_calculate_tdee" />
+
+    <TextView
+        android:id="@+id/tv_BMR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/btn_calculate_tdee"
+        app:layout_constraintTop_toBottomOf="@+id/tv_BMI" />
+
+    <TextView
+        android:id="@+id/tv_TDEE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/btn_calculate_tdee"
+        app:layout_constraintTop_toBottomOf="@+id/tv_BMR" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
