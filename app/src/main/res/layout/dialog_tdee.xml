@@ -10,7 +10,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/label_gender"
+        android:id="@+id/tv_tdeedialog_gender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -18,16 +18,16 @@
         android:layout_weight="8"
         android:text="@string/gender"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settingsLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_settings_my_profile" />
 
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="8"
-        android:checkedButton="@id/rb_male">
+        android:checkedButton="@id/rb_tdeedialog_male">
 
         <RadioButton
-            android:id="@+id/rb_male"
+            android:id="@+id/rb_tdeedialog_male"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="8"
@@ -37,7 +37,7 @@
             tools:layout_editor_absoluteY="238dp" />
 
         <RadioButton
-            android:id="@+id/rb_female"
+            android:id="@+id/rb_tdeedialog_female"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="8"
@@ -47,7 +47,7 @@
     </RadioGroup>
 
     <TextView
-        android:id="@+id/label_age"
+        android:id="@+id/tv_tdeedialog_age"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -55,10 +55,10 @@
         android:layout_weight="8"
         android:text="@string/age"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settingsLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_settings_my_profile" />
 
     <EditText
-        android:id="@+id/editText_age"
+        android:id="@+id/et_tdeedialog_age"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -73,7 +73,7 @@
         app:layout_constraintTop_toBottomOf="@+id/heightLabel" />
 
     <TextView
-        android:id="@+id/label_height"
+        android:id="@+id/tv_tdeedialog_height"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -84,7 +84,7 @@
         app:layout_constraintTop_toBottomOf="@+id/gender_radio_group" />
 
     <EditText
-        android:id="@+id/editText_height"
+        android:id="@+id/et_tdeedialog_height"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -99,7 +99,7 @@
         app:layout_constraintTop_toBottomOf="@+id/heightLabel" />
 
     <TextView
-        android:id="@+id/label_weight"
+        android:id="@+id/tv_tdeedialog_weight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -110,7 +110,7 @@
         app:layout_constraintTop_toBottomOf="@+id/height" />
 
     <EditText
-        android:id="@+id/editText_weight"
+        android:id="@+id/et_tdeedialog_weight"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
@@ -120,10 +120,29 @@
         android:inputType="number|numberDecimal"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startingWeightLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_settings_start_weight" />
+
+    <TextView
+        android:id="@+id/tv_tdeedialog_activitylevel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="8"
+        android:text="Activity Level"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/height" />
+
+    <Spinner
+        android:id="@+id/spin_tdeedialog_activitylevel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_weight="8"
+        android:entries="@array/activity_levels" />
 
     <Button
-        android:id="@+id/btn_this_is_a_unique_button_name"
+        android:id="@+id/btn_tdeedialog_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

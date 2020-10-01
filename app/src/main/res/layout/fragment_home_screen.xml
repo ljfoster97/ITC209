@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <com.jjoe64.graphview.GraphView
-            android:id="@+id/graphView"
+            android:id="@+id/graphview_home_graph"
             android:layout_width="match_parent"
             android:layout_height="388dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -22,17 +22,17 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_home_newentry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:backgroundTint="@color/red_imperial"
-            android:text="Create new entry"
+            android:text="@string/create_new_entry"
             android:textColor="@color/blue_offwhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/graphView"
+            app:layout_constraintTop_toBottomOf="@+id/graphview_home_graph"
             app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

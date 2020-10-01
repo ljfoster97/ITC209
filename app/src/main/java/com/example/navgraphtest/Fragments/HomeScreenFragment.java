@@ -13,14 +13,12 @@ import androidx.navigation.Navigation;
 
 import com.example.navgraphtest.Activities.MainActivity;
 import com.example.navgraphtest.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.jjoe64.graphview.GraphView;
 
 public class HomeScreenFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
         // Update ActionBar titles in MainActivity to reflect current fragment
         ((MainActivity) getActivity()).setActionBarTitle("Today's Consumption");
         ((MainActivity) getActivity()).getSupportActionBar().setSubtitle("");
@@ -43,7 +41,7 @@ public class HomeScreenFragment extends Fragment {
 
 
         // Set onClickListener to navigate to the calendarViewFragment when graph is clicked using navController.
-        GraphView graph = view.findViewById(R.id.graphView);
+        GraphView graph = view.findViewById(R.id.graphview_home_graph);
         graph.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

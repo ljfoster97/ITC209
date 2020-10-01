@@ -29,7 +29,7 @@
                 android:layout_height="match_parent">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/iv_photo_item"
+                    android:id="@+id/civ_listitem_photo"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     card_view:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
                     card_view:srcCompat="@android:mipmap/sym_def_app_icon" />
 
                 <TextView
-                    android:id="@+id/title"
+                    android:id="@+id/tv_listitem_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -46,11 +46,11 @@
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
-                    card_view:layout_constraintStart_toEndOf="@+id/iv_photo_item"
+                    card_view:layout_constraintStart_toEndOf="@+id/civ_listitem_photo"
                     card_view:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/description"
+                    android:id="@+id/tv_listitem_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -59,11 +59,11 @@
                     android:maxLines="3"
                     android:textColor="@android:color/secondary_text_light"
                     android:textSize="14sp"
-                    card_view:layout_constraintStart_toEndOf="@+id/iv_photo_item"
-                    card_view:layout_constraintTop_toBottomOf="@+id/title" />
+                    card_view:layout_constraintStart_toEndOf="@+id/civ_listitem_photo"
+                    card_view:layout_constraintTop_toBottomOf="@+id/tv_listitem_title" />
 
                 <ImageView
-                    android:id="@+id/delete"
+                    android:id="@+id/iv_listitem_delete"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"

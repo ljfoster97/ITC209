@@ -14,9 +14,9 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.navgraphtest.Activities.MainActivity;
 import com.example.navgraphtest.Database.CategoryModel;
 import com.example.navgraphtest.Database.DatabaseHelper;
-import com.example.navgraphtest.Activities.MainActivity;
 import com.example.navgraphtest.R;
 import com.example.navgraphtest.RecyclerView.DynamicFragmentAdapter;
 import com.google.android.material.tabs.TabLayout;
@@ -49,10 +49,6 @@ public class CalendarViewFragment extends Fragment {
 
         // Open fragment with today's date selected on calendarview.
         mCalendarView.setSelectedDate(CalendarDay.today());
-
-
-
-
     }
 
 
@@ -67,8 +63,6 @@ public class CalendarViewFragment extends Fragment {
         }
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_calendar_view, container, false);
-
-
     }
 
     @Override
@@ -80,9 +74,9 @@ public class CalendarViewFragment extends Fragment {
         initViews();
 
         // Get textview to display date
-        mTextViewCurrentDate = getActivity().findViewById(R.id.currentDateTextView);
+        mTextViewCurrentDate = getActivity().findViewById(R.id.tv_calendar_selecteddate);
         // Get calendarview
-        mCalendarView = getActivity().findViewById(R.id.calendarView);
+        mCalendarView = getActivity().findViewById(R.id.calendarview_calendar_calendar);
         // Set listener to update textview when a  day is selected
         mCalendarView.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
@@ -99,9 +93,9 @@ public class CalendarViewFragment extends Fragment {
     private void initViews() {
         Log.d(TAG, "initViews: ");
         // Get ViewPager.
-        mViewPager = getActivity().findViewById(R.id.viewPagerCalendarView);
+        mViewPager = getActivity().findViewById(R.id.viewpager_calendar_tabpages);
         // Get TabLayout
-        mTabLayout = getActivity().findViewById(R.id.tabLayoutCalendarView);
+        mTabLayout = getActivity().findViewById(R.id.tablayout_calendar_categorytabs);
         mViewPager.setOffscreenPageLimit(5);
         // Set up ViewPager to update based on tabs.
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
@@ -113,18 +107,14 @@ public class CalendarViewFragment extends Fragment {
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
 
         setDynamicFragmentToTabLayout();
-
-
     }
 
     private void setDynamicFragmentToTabLayout() {

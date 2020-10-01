@@ -13,7 +13,7 @@
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbar_main_navhostfragment"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/blue_main"
@@ -27,24 +27,24 @@
             app:titleTextColor="@android:color/primary_text_dark" />
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/nav_host_fragment"
+            android:id="@+id/fragmentcontainerview_main_navhostfragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_weight="1"
             app:defaultNavHost="true"
 
-            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+            app:layout_constraintBottom_toTopOf="@+id/bottomnavigationview_main_navhostfragment"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_main_navhostfragment"
             app:navGraph="@navigation/nav_graph"
             >
 
         </androidx.fragment.app.FragmentContainerView>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
+            android:id="@+id/bottomnavigationview_main_navhostfragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/blue_main"
@@ -54,7 +54,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_gravity="bottom"
             app:menu="@menu/bottom_navigation_menu"
-            app:layout_constraintTop_toBottomOf="@id/nav_host_fragment"
+            app:layout_constraintTop_toBottomOf="@id/fragmentcontainerview_main_navhostfragment"
             android:clickable="true"
             android:focusable="true"/>
 

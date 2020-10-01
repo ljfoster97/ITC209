@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,26 +16,65 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.navgraphtest.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import static com.example.navgraphtest.Utilities.ApplicationSettings.settingsExist;
+
 /**
  * MainActivity.
+ * <p>
  * I am using the "One-Activity-Multiple-Fragments" navigation pattern.
  * This is essentially the parent activity to display all the other fragments.
  * Contains a NavHostFragment, BottomNavigationView and a toolbar.
+ * <p>
+ * On fresh install, check to see if sharedPreferences settings exist,
+ * if not launch the settings activity.
  */
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //
         setUpNavigation();
 
+        // Checked sharedPreferences setttings to see if user has completed profile + calorie goal.
+        if (!settingsExist(this)) {
+            // If the profile hasn't been completed, launch the settings activity and a simple prompt.
+            Toast.makeText(getApplicationContext(), "Let's get started! " +
+                    "Tap the Calculate button to begin.", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
+        } else {
+            // This is redundant.
+            setUpNavigation();
+        }
     }
 
+    @Override
+    protected void onRestart() {
+        this.finish();
+        this.startActivity(new Intent(this, this.getClass()));
+        super.onRestart();
+
+        // This is to recreate everything when leaving settingsActivity to change from light/dark theme.
+        // Not yet implemented.
+//        if(settingsExist(this)) {
+//            setUpNavigation();
+//        }
+//        else
+//        {
+//            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+//            startActivity(intent);
+//        }
+//        setUpNavigation();
+    }
 
     public void setUpNavigation() {
         // Find the toolbar view inside the activity layout
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar_main_navhostfragment);
 
         // Sets the Toolbar to act as the ActionBar for this Activity window.
         // Make sure the toolbar exists in the activity and is not null
@@ -43,9 +83,9 @@ public class MainActivity extends AppCompatActivity {
         // Set toolbar title
         toolbar.setTitle("Home Screen");
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomnavigationview_main_navhostfragment);
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.nav_host_fragment);
+                .findFragmentById(R.id.fragmentcontainerview_main_navhostfragment);
 
         // Set up Navcontroller with bottomNavigationView.
         NavigationUI.setupWithNavController(bottomNavigationView, navHostFragment.getNavController());

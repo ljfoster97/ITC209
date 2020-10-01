@@ -13,7 +13,7 @@
         android:layout_height="match_parent">
 
         <com.prolificinteractive.materialcalendarview.MaterialCalendarView
-            android:id="@+id/calendarView"
+            android:id="@+id/calendarview_calendar_calendar"
             android:layout_width="411dp"
             android:layout_height="377dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -31,14 +31,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/calendarView">
+            app:layout_constraintTop_toBottomOf="@+id/calendarview_calendar_calendar">
 
             <androidx.coordinatorlayout.widget.CoordinatorLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tabLayoutCalendarView"
+                    android:id="@+id/tablayout_calendar_categorytabs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:tabGravity="center"
@@ -51,7 +51,7 @@
                 android:layout_height="match_parent">
 
                 <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/viewPagerCalendarView"
+                    android:id="@+id/viewpager_calendar_tabpages"
                     android:layout_width="match_parent"
                     android:layout_height="343dp">
 
@@ -61,15 +61,14 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/currentDateTextView"
+            android:id="@+id/tv_calendar_selecteddate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/calendarView"
-            app:layout_constraintEnd_toEndOf="@+id/calendarView"
+            app:layout_constraintBottom_toBottomOf="@+id/calendarview_calendar_calendar"
+            app:layout_constraintEnd_toEndOf="@+id/calendarview_calendar_calendar"
             app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="@+id/calendarView"
-            app:layout_constraintTop_toTopOf="@+id/calendarView"
+            app:layout_constraintStart_toStartOf="@+id/calendarview_calendar_calendar"
+            app:layout_constraintTop_toTopOf="@+id/calendarview_calendar_calendar"
             app:layout_constraintVertical_bias="0.965" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

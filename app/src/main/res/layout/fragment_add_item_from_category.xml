@@ -6,14 +6,14 @@
     tools:context=".Fragments.AddItemFromCategoryFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_items"
+        android:id="@+id/rv_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <Button
-        android:id="@+id/btn_additem_newitem"
+        android:id="@+id/btn_item_newitem"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"

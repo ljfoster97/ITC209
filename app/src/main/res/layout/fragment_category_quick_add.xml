@@ -8,17 +8,17 @@
     tools:ignore="PrivateResource">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_categories"
+        android:id="@+id/rv_category_categories"
         android:layout_width="match_parent"
         android:layout_height="650dp"
-        android:layout_above="@+id/btn_category_add"
+        android:layout_above="@+id/btn_category_newcategory"
         >
 
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <Button
-        android:id="@+id/btn_category_add"
+        android:id="@+id/btn_category_newcategory"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"

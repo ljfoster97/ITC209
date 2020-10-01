@@ -24,9 +24,9 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.navgraphtest.Activities.MainActivity;
 import com.example.navgraphtest.Database.CategoryModel;
 import com.example.navgraphtest.Database.DatabaseHelper;
-import com.example.navgraphtest.Activities.MainActivity;
 import com.example.navgraphtest.R;
 import com.example.navgraphtest.RecyclerView.CategoryAdapter;
 
@@ -59,8 +59,8 @@ public class CategoryQuickAddFragment extends Fragment {
 
         navController = Navigation.findNavController(getView());
 
-        recyclerView = getView().findViewById(R.id.recycler_view_categories);
-        actionButton = getView().findViewById(R.id.btn_category_add);
+        recyclerView = getView().findViewById(R.id.rv_category_categories);
+        actionButton = getView().findViewById(R.id.btn_category_newcategory);
         database_helper = new DatabaseHelper(getActivity());
 
 
@@ -118,7 +118,7 @@ public class CategoryQuickAddFragment extends Fragment {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
 
-        title = dialog.findViewById(R.id.t_category_title);
+        title = dialog.findViewById(R.id.edittext_category_title);
         submit = dialog.findViewById(R.id.btn_category_submit);
 
         submit.setOnClickListener(new View.OnClickListener() {

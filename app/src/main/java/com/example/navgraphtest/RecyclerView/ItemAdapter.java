@@ -20,11 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.drawable.RoundedBitmapDrawable;
-import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.navgraphtest.Activities.MainActivity;
 import com.example.navgraphtest.Database.DatabaseHelper;
 import com.example.navgraphtest.Database.FoodItemModel;
 import com.example.navgraphtest.R;
@@ -53,21 +50,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.viewHolder> {
         return new viewHolder(view);
     }
 
-    // setting up list_item layout with viewHolder
-    public class viewHolder extends RecyclerView.ViewHolder {
-        TextView title, calories;
-        ImageView delete, edit, photo;
-
-        public viewHolder(View itemView) {
-            super(itemView);
-            // Get components in list_item layout.
-            title = itemView.findViewById(R.id.title);
-            calories = itemView.findViewById(R.id.description);
-            delete = itemView.findViewById(R.id.delete);
-            photo = itemView.findViewById(R.id.iv_photo_item);
-        }
-    }
-
     // Databinding
     @Override
     public void onBindViewHolder(final ItemAdapter.viewHolder holder, @SuppressLint("RecyclerView") final int position) {
@@ -84,7 +66,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.viewHolder> {
         // Set title and calorie within the list_item layout.
         holder.title.setText(itemName);
         String calorieValueString = calorieValue + " Calories";
-        holder.calories.setText(String.valueOf(calorieValueString));
+        holder.calories.setText(calorieValueString);
 
         databaseHelper = new DatabaseHelper(context);
 
@@ -130,11 +112,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.viewHolder> {
         });
     }
 
-    @Override
-    public int getItemCount() {
-        return arrayList.size();
-    }
-
     // Dialog box for creating/editing items.
     // Essentially the same as the one in CategoryAdapter.
     public void showDialog(final int position) {
@@ -156,10 +133,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.viewHolder> {
         dialog.show();
 
         // Get components in dialog_new_item layout.
-        title = dialog.findViewById(R.id.t_newitem_name);
-        calories = dialog.findViewById(R.id.t_newitem_calorievalue);
-        submit = dialog.findViewById(R.id.btn_newitem_submit);
-        imageView = dialog.findViewById(R.id.iv_photo_dialog);
+        title = dialog.findViewById(R.id.et_itemdialog_itemname);
+        calories = dialog.findViewById(R.id.et_itemdialog_calorievalue);
+        submit = dialog.findViewById(R.id.btn_itemdialog_submit);
+        imageView = dialog.findViewById(R.id.iv_itemdialog_photo);
 
         // Set to current values
         title.setText(arrayList.get(position).getItemName());
@@ -168,7 +145,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.viewHolder> {
         // Convert BLOB to bitmap and display in the items ImageView
         final byte[] photo = (arrayList.get(position).getPhoto());
         ByteArrayInputStream imageStream = new ByteArrayInputStream(photo);
-        Bitmap bitmap= BitmapFactory.decodeStream(imageStream);
+        Bitmap bitmap = BitmapFactory.decodeStream(imageStream);
         imageView.setImageBitmap(bitmap);
 
         submit.setOnClickListener(new View.OnClickListener() {
@@ -194,6 +171,26 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.viewHolder> {
                 }
             }
         });
+    }
+
+    @Override
+    public int getItemCount() {
+        return arrayList.size();
+    }
+
+    // setting up list_item layout with viewHolder
+    public class viewHolder extends RecyclerView.ViewHolder {
+        TextView title, calories;
+        ImageView delete, edit, photo;
+
+        public viewHolder(View itemView) {
+            super(itemView);
+            // Get components in list_item layout.
+            title = itemView.findViewById(R.id.tv_listitem_title);
+            calories = itemView.findViewById(R.id.tv_listitem_description);
+            delete = itemView.findViewById(R.id.iv_listitem_delete);
+            photo = itemView.findViewById(R.id.civ_listitem_photo);
+        }
     }
 
 }

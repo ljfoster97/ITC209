@@ -46,7 +46,7 @@ public class DynamicFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView: view created");
-        View view = inflater.inflate(R.layout.dynamic_fragment_layout, container, false);
+        View view = inflater.inflate(R.layout.dynamic_recyclerview_fragment, container, false);
 
         initViews(view);
         return view;

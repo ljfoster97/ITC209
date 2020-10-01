@@ -122,7 +122,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.viewHo
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
 
-        title = dialog.findViewById(R.id.t_category_title);
+        title = dialog.findViewById(R.id.edittext_category_title);
         submit = dialog.findViewById(R.id.btn_category_submit);
 
         // Get existing title.
@@ -158,8 +158,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.viewHo
         public viewHolder(View itemView) {
             super(itemView);
 
-            title = itemView.findViewById(R.id.title);
-            delete = itemView.findViewById(R.id.delete);
+            title = itemView.findViewById(R.id.tv_listitem_title);
+            delete = itemView.findViewById(R.id.iv_listitem_delete);
         }
     }
 }

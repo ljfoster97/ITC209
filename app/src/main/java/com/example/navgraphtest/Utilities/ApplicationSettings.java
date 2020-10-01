@@ -18,11 +18,18 @@ public class ApplicationSettings {
         editor.apply();
     }
 
-    static public void clearSettings(Context mContext)
-    {
+    static public void clearSettings(Context mContext) {
         SharedPreferences settings = mContext.getSharedPreferences("SETTINGS", 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.clear();
         editor.apply();
+    }
+
+    static public boolean settingsExist(Context mContext) {
+        SharedPreferences settings = mContext.getSharedPreferences("SETTINGS", 0);
+
+        // The app requires a calorie goal, so check for this.
+        return (!settings.getString("calorieGoal", "").equals(""));
+
     }
 }

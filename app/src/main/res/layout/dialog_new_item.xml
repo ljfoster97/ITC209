@@ -14,7 +14,7 @@
         android:layout_weight="8">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_photo_dialog"
+            android:id="@+id/iv_itemdialog_photo"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginTop="16dp"
@@ -28,7 +28,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/iv_settings_editicon"
                 android:layout_width="317dp"
                 android:layout_height="33dp"
                 android:layout_weight="8"
@@ -44,7 +44,7 @@
     </FrameLayout>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_itemdialog_enteritemname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
@@ -53,7 +53,7 @@
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/t_newitem_name"
+        android:id="@+id/et_itemdialog_itemname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
@@ -67,7 +67,7 @@
         android:padding="15dp" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tv_itemdialog_entercalorievalue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
@@ -75,7 +75,7 @@
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/t_newitem_calorievalue"
+        android:id="@+id/et_itemdialog_calorievalue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
@@ -89,7 +89,7 @@
         android:padding="15dp" />
 
     <Button
-        android:id="@+id/btn_newitem_submit"
+        android:id="@+id/btn_itemdialog_submit"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

@@ -34,9 +34,9 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.navgraphtest.Activities.MainActivity;
 import com.example.navgraphtest.Database.DatabaseHelper;
 import com.example.navgraphtest.Database.FoodItemModel;
-import com.example.navgraphtest.Activities.MainActivity;
 import com.example.navgraphtest.R;
 import com.example.navgraphtest.RecyclerView.ItemAdapter;
 
@@ -77,8 +77,8 @@ public class AddItemFromCategoryFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // get components in layout
-        recyclerView = getView().findViewById(R.id.recycler_view_items);
-        actionButton = getView().findViewById(R.id.btn_additem_newitem);
+        recyclerView = getView().findViewById(R.id.rv_item);
+        actionButton = getView().findViewById(R.id.btn_item_newitem);
         database_helper = new DatabaseHelper(getActivity());
         displayItems();
 
@@ -177,9 +177,9 @@ public class AddItemFromCategoryFragment extends Fragment {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
 
-        choosePhoto = dialog.findViewById(R.id.tv_choosePhoto);
-        takePhoto = dialog.findViewById(R.id.tv_takePhoto);
-        cancel = dialog.findViewById(R.id.btn_cancel);
+        choosePhoto = dialog.findViewById(R.id.tv_photodialog_gallery);
+        takePhoto = dialog.findViewById(R.id.tv_photodialog_newphoto);
+        cancel = dialog.findViewById(R.id.btn_photodialog_cancel);
 
         takePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -227,10 +227,10 @@ public class AddItemFromCategoryFragment extends Fragment {
         dialog.show();
 
         // Get components in dialog_new_item
-        itemName = dialog.findViewById(R.id.t_newitem_name);
-        itemCalories = dialog.findViewById(R.id.t_newitem_calorievalue);
-        submit = dialog.findViewById(R.id.btn_newitem_submit);
-        iv_photo = dialog.findViewById(R.id.iv_photo_dialog);
+        itemName = dialog.findViewById(R.id.et_itemdialog_itemname);
+        itemCalories = dialog.findViewById(R.id.et_itemdialog_calorievalue);
+        submit = dialog.findViewById(R.id.btn_itemdialog_submit);
+        iv_photo = dialog.findViewById(R.id.iv_itemdialog_photo);
 
         // Show new dialog window if user wants to change the photo.
         // I previously had buttons in this layout,

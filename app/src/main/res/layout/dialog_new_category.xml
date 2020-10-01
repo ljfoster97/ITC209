@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_photodialog_changephoto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="24dp"
@@ -19,7 +19,7 @@
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/t_category_title"
+        android:id="@+id/edittext_category_title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="16dp"
