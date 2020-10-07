@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeScreenFragment"
-        android:name="com.example.navgraphtest.Fragments.HomeScreenFragment"
+        android:name="com.example.foodiva.Fragments.HomeScreenFragment"
         android:label="fragment_home_screen"
         tools:layout="@layout/fragment_home_screen" >
         <action
@@ -29,17 +29,17 @@
     </fragment>
     <activity
         android:id="@+id/mainActivity"
-        android:name="com.example.navgraphtest.Activities.MainActivity"
+        android:name="com.example.foodiva.Activities.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
     <fragment
         android:id="@+id/calendarViewFragment"
-        android:name="com.example.navgraphtest.Fragments.CalendarViewFragment"
+        android:name="com.example.foodiva.Fragments.CalendarViewFragment"
         android:label="fragment_calendar_view"
         tools:layout="@layout/fragment_calendar_view" />
     <fragment
         android:id="@+id/categoryQuickAddFragment"
-        android:name="com.example.navgraphtest.Fragments.CategoryQuickAddFragment"
+        android:name="com.example.foodiva.Fragments.CategoryQuickAddFragment"
         android:label="fragment_category_quick_add"
         tools:layout="@layout/fragment_category_quick_add" >
         <action
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/addItemFromCategoryFragment"
-        android:name="com.example.navgraphtest.Fragments.AddItemFromCategoryFragment"
+        android:name="com.example.foodiva.Fragments.AddItemFromCategoryFragment"
         android:label="fragment_add_item_from_category"
         tools:layout="@layout/fragment_add_item_from_category" >
         <argument
